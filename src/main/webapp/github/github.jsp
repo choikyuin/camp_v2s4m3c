@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<H1>1. Github 테스트 중</H1>
+<H1>1. Github 진행중</H1>
 </body>
 </html>
  
