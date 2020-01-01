@@ -91,8 +91,12 @@ USERCATENO SUBCATENO NAME  SEQNO VISIBLE 						RDATE               CNT
           1        		 1 				공지사항      1 				Y       2019-12-24 13:02:38.0  			  0
           1        		 2 			유실물안내     2 				Y       2019-12-24 13:03:27.0   		  0
 
-
-
+-- 서브카테고리 조회
+SELECT subcateno, usercateno, name, seqno, visible, rdate, cnt
+FROM subcate
+WHERE subcateno = 1;
+    
+          
 -- subcate 전체 레코드 갯수
 SELECT count(*) as count
 FROM subcate
@@ -104,7 +108,9 @@ WHERE usercateno = 1;
 
 
 
-
+-- 삭제
+DELETE FROM subcate
+WHERE subcateno = 6;
 
 
 

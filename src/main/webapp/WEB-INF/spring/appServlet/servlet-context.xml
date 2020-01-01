@@ -22,9 +22,11 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="dev.mvc.camp" />
+	 
+  <context:component-scan base-package="dev.mvc.team2" />
   <context:component-scan base-package="dev.mvc.usercategrp" /> <!-- cki -->
   <context:component-scan base-package="dev.mvc.subcategrp" /> <!-- 왕눈이 -->
+  <context:component-scan base-package="dev.mvc.usercontents" /> <!-- 아무개 -->
 	
 	
 	
