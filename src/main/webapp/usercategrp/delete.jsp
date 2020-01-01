@@ -27,11 +27,11 @@
  
 <body>
 <FORM  name='frm_delete_by_categrpno' action='../subcate/delete_by_categrpno.do' method="POST">
-<input type="hidden" value="${usercateVO.usercateno }">
+<input type="hidden" name="usercateno"   value="${usercateVO.usercateno }">
 </FORM>
 
 <FORM id="frm" name="frm" method="POST" action="./delete.do">
-<input type="hidden" value="${usercateVO.usercateno }">
+<input type="hidden"  name="usercateno"  value="${usercateVO.usercateno }">
 
 <fieldset style="border: 1px solid;">
 <ul>
@@ -46,16 +46,18 @@
   <button type="button" onclick="delete_by_categrpno();" class="btn btn-info">삭제</button>
   </li>
   </c:if>
-  <c:if test="${count_by_categrpno == 0 }">
+  
   <li class="li_none">
   삭제하면 복구 할수 없습니다. <br>
   삭제 하시겠습니까?
   </li>
   <li class="li_right">
-  <button type="button" onclick="submit();" class="btn btn-info">삭제</button>
+  <c:if test="${count_by_categrpno == 0 }">
+  <button type="submit" class="btn btn-info">삭제</button>
+  </c:if>
   <button type="button" onclick="window.close();" class="btn btn-info">닫기</button>
   </li>
-  </c:if>
+  </ul>
 </fieldset>
 
 </FORM>

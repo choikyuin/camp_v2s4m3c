@@ -13,16 +13,37 @@ public class SubcateProc implements SubcateProcInter {
   
 
   @Override
+  public int create(SubcateVO subcateVO) {
+    int count = subcateDAO.create(subcateVO); 
+    return count;
+  }
+
+  
+
+  @Override
   public List<SubcateVO> list_by_categrpno(int usercateno) {
     List<SubcateVO>list =  subcateDAO.list_by_categrpno(usercateno);
    return list;
   }
 
+  
+  @Override
+  public SubcateVO read(int subcateno) {
+    SubcateVO list = subcateDAO.read(subcateno);
+    return list;
+  }
+  
+  
 
   @Override
   public int count_by_categrpno(int usercateno) {
     int cnt =  subcateDAO.count_by_categrpno(usercateno);
     return cnt;
   }
+
+
+
+
+
 
 }

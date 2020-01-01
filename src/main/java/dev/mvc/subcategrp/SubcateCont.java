@@ -22,13 +22,51 @@ public class SubcateCont {
   @Qualifier("dev.mvc.usercategrp.UsercateProc") // 이름 지정
   private UsercateProc usercateProc;
   
+  
+  /**
+   * 서브 카테고리 등록
+   * @param usercateno
+   * @return
+   */
+  @RequestMapping(value="/subcategrp/create.do", method=RequestMethod.GET)
+  public ModelAndView create(int usercaeno) {
+    ModelAndView mav = new ModelAndView();
+    
+    UsercateVO usercateVO = usercateProc.read(usercaeno);
+    mav.addObject("usercateVO", usercateVO);
+    
+    mav.setViewName("/subcategrp/create");
+    return mav;
+  }
+  
+  @RequestMapping(value="/subcategrp/create.do", method=RequestMethod.POST)
+  public ModelAndView create(SubcateVO subcateVO) {
+     ModelAndView mav = new ModelAndView();
+     int count = subcateProc.create(subcateVO);
+     
+     mav.addObject("count", count);
+     mav.addObject("subcateVO", subcateVO);
+     
+     mav.setViewName("/subcategrp/create_msg");
+     
+     return mav;
+  }
+  
+  /**
+   * 서브 카테고리 목록
+   * @param usercateno
+   * @return
+   */
   /*@RequestMapping(value="/usercategrp/create.do", method=RequestMethod.POST)*/
   @RequestMapping(value="/subcategrp/list.do", method=RequestMethod.GET)
   public ModelAndView list_by_categrpno(int usercateno) {
     ModelAndView mav = new ModelAndView();
-    System.out.println("usercateno : " + usercateno);
+   /* System.out.println("usercateno : " + usercateno);*/
     
     List<SubcateVO> list=  subcateProc.list_by_categrpno(usercateno);
+    UsercateVO usercateVO = usercateProc.read(usercateno);
+    
+    mav.addObject("usercateVO", usercateVO);
     mav.addObject("list", list);
     
     

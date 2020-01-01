@@ -4,6 +4,17 @@ import java.util.List;
 
 public interface SubcateDAOInter {
   
+  
+  /**
+   * 서브카테고리 등록
+   * <xmp>
+   *  <insert id="create" parameterType="SubcateVO">
+   * </xmp>
+   */
+  public int create(SubcateVO subcateVO);
+  
+  
+  
   /**
    * 서브카테고리 목록
    * <xmp>
@@ -11,6 +22,14 @@ public interface SubcateDAOInter {
    * </xmp>
    */
   public List<SubcateVO> list_by_categrpno(int usercateno);
+  
+  
+  /**
+   * 서브카테고리 조회
+   *
+   */
+  public SubcateVO read(int subcateno);
+  
   
   
   /**

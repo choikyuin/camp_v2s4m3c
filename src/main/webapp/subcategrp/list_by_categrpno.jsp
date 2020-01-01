@@ -46,13 +46,14 @@ function delete_form(usercateno) {
 <body>
 <jsp:include page="/menu/top.jsp" />
  
-  <DIV class='title_line'>그룹 테스트 페이지</DIV>
+  <DIV class='title_line'>${usercateVO.name }</DIV>
  
   <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
     <FORM name='frm_create' id='frm_create' method='POST' action='./create.do'>
       <!-- <input type='hidden' name='lang' id='lang' value='en'> --> <!-- ko, en -->
         
       <label>장소 분류</label>
+      <input type="hidden" name="usercateno" value="${usercateVO.usercateno }">
       <input type='text' name='name' value='' required="required" style='width: 25%;'>
  
       <label>순서</label>
@@ -96,7 +97,11 @@ function delete_form(usercateno) {
     
     <TR>
       <TD style='text-align: center;'>${subcateVO.seqno }</TD>
-      <TD> ${subcateVO.name } </TD>
+      <TD>
+      <A href="../contents/list.do?usercateno=${usercateno }&subcateno=${subcateVO.subcateno}">
+       ${subcateVO.name }
+       </A> 
+       </TD>
       <TD style='text-align: center;'>${subcateVO.rdate.substring(0, 10) }</TD>
       <TD style='text-align: center;'>${subcateVO.visible }</TD>
       <TD style='text-align: center;'>

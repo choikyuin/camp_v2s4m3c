@@ -11,8 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
 
    <insert id="create" parameterType="SubcateVO">
-    
-   
+    INSERT INTO subcate(subcateno, name, seqno, visible, rdate, cnt, usercateno)
+    VALUES((SELECT NVL(MAX(subcateno), 0) + 1 as subcateno FROM subcate),
+                #{name}, #{seqno}, #{visible}, sysdate, 0, #{usercateno})
    </insert>   
 
   <!--  서브카테고리 목록  -->
@@ -23,6 +24,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     ORDER BY subcateno ASC
   </select>
   
+  <!-- 서브카테고리 조회 -->
+  <select id="read" parameterType="int" resultType="SubcateVO">
+    SELECT subcateno, usercateno, name, seqno, visible, rdate, cnt
+    FROM subcate
+    WHERE subcateno = #{subcateno}
+  </select>
+  
   
   <!-- FK 가있는 SUBCATE 레코드 갯수 -->
   <select id="count_by_categrpno"  resultType="int">
@@ -30,5 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM subcate
     WHERE usercateno = #{usercateno}
   </select>
+  
+
   
 </mapper>

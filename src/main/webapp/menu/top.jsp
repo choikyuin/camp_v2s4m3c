@@ -23,6 +23,9 @@
       <%-- <li><A class='menu_link'  href='${root}/contents/list_all.do'>전체글</A></li> --%>
       <li><A href=''>로그인</A></li>
       <li><A href=''>회원가입</A></li>
+      <li><A href='${root}/subcategrp/list.do?usercateno=1' style="color: red;">알림마당 </A></li>
+      <li><A href='${root}/subcategrp/list.do?usercateno=2' style="color: blue;">고객마당</A></li>
+      <li><A href='${root}/subcategrp/list.do?usercateno=3' style="color: green;">시설안내</A></li>
       
     </ul>
   </nav>

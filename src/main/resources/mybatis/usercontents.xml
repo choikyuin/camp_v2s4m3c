@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dev.mvc.usercontents.ContentsDAOInter 패키지에 등록된 interface 명시,
+      패키지명과 인터페이스명은 실제로 존재해야함,
+      Spring이 내부적으로 자동으로 interface를 구현해줌. -->
+      
+<mapper namespace="dev.mvc.usercontents.ContentsDAOInter"> 
+
+
+<!-- 컨텐츠 등록 -->
+<insert id="create" parameterType="ContentsVO">
+INSERT INTO usercontents(contentsno, usercateno, subcateno, title, content,
+                         recom, cnt, replycnt, rdate, word)
+VALUES((SELECT NVL(MAX(contentsno), 0) + 1 as contentsno FROM usercontents),
+            #{usercateno}, #{subcateno}, #{title}, #{content}, 0, 0, 0, sysdate, #{word})
+
+</insert>
+
+
+<!-- 서브 카테고리별 컨텐츠 목록 -->
+<select id="list" parameterType="int" resultType="ContentsVO">
+SELECT contentsno, usercateno, subcateno, title, content,
+       recom, cnt, replycnt, rdate, word
+FROM usercontents
+WHERE subcateno = #{subcateno}
+ORDER BY contentsno DESC
+</select>
+
+
+</mapper>      

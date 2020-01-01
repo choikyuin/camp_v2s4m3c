@@ -179,13 +179,14 @@ return mav;
   
 // 카테고리 삭제 처리
   @RequestMapping(value = "/usercategrp/delete.do", method=RequestMethod.POST) 
-  public ModelAndView delete(int usercateno,
+  public ModelAndView delete_proc(int usercateno,
                                        RedirectAttributes ra) {
     ModelAndView mav = new ModelAndView();
    int count = usercateProc.delete(usercateno);
    ra.addAttribute("count", count);
+   ra.addAttribute("usercateno", usercateno);
    
-   mav.setViewName("redirect:/usercategrp/delete_msg");
+   mav.setViewName("redirect:/usercategrp/delete_msg.jsp"); //redirect로 보낼땐 .jsp 붙여줘야함
     return mav;
   }
   
